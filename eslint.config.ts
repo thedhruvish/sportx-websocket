@@ -27,7 +27,15 @@ export default [
       semi: ["error", "always"],
       eqeqeq: ["error", "always"],
       "max-len": ["error", { code: 100 }],
-
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        {
+          argsIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
+          caughtErrorsIgnorePattern: "^_",
+        },
+      ],
       // Prettier decides formatting
       "prettier/prettier": [
         "warn",
