@@ -1,0 +1,372 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schema.getpostman.com/json/draft-07/collection/v2.1.0/",
+  "info": {
+    "name": "SportX API",
+    "_postman_id": "6d3d6c7b-2b0a-4ac3-9f7e-7a0e8b9a6f7e",
+    "description": "Generated collection for SportX API routes in src/app.ts",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    },
+    {
+      "key": "authToken",
+      "value": ""
+    },
+    {
+      "key": "sportId",
+      "value": "00000000-0000-0000-0000-000000000001"
+    },
+    {
+      "key": "leagueId",
+      "value": "00000000-0000-0000-0000-000000000002"
+    },
+    {
+      "key": "teamAId",
+      "value": "00000000-0000-0000-0000-000000000003"
+    },
+    {
+      "key": "teamBId",
+      "value": "00000000-0000-0000-0000-000000000004"
+    },
+    {
+      "key": "matchId",
+      "value": "00000000-0000-0000-0000-000000000005"
+    },
+    {
+      "key": "id",
+      "value": "00000000-0000-0000-0000-000000000010"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "item": [
+        {
+          "name": "GET /",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/",
+              "host": ["{{baseUrl}}"],
+              "path": [""]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "POST /api/auth/register",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": "{{baseUrl}}/api/auth/register"
+          }
+        },
+        {
+          "name": "POST /api/auth/login",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": "{{baseUrl}}/api/auth/login"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Sports",
+      "item": [
+        {
+          "name": "GET /api/sports",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/sports"
+          }
+        },
+        {
+          "name": "POST /api/sports",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Football\",\n  \"slug\": \"football\",\n  \"isActive\": true\n}"
+            },
+            "url": "{{baseUrl}}/api/sports"
+          }
+        },
+        {
+          "name": "GET /api/sports/:id",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/sports/{{id}}"
+          }
+        },
+        {
+          "name": "PATCH /api/sports/:id",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Football Updated\"\n}"
+            },
+            "url": "{{baseUrl}}/api/sports/{{id}}"
+          }
+        },
+        {
+          "name": "DELETE /api/sports/:id",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/sports/{{id}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Leagues",
+      "item": [
+        {
+          "name": "GET /api/leagues",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/leagues"
+          }
+        },
+        {
+          "name": "POST /api/leagues",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sportId\": \"{{sportId}}\",\n  \"name\": \"Premier League\",\n  \"country\": \"England\",\n  \"slug\": \"premier-league\"\n}"
+            },
+            "url": "{{baseUrl}}/api/leagues"
+          }
+        },
+        {
+          "name": "GET /api/leagues/:id",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/leagues/{{id}}"
+          }
+        },
+        {
+          "name": "PATCH /api/leagues/:id",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Premier League Updated\"\n}"
+            },
+            "url": "{{baseUrl}}/api/leagues/{{id}}"
+          }
+        },
+        {
+          "name": "DELETE /api/leagues/:id",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/leagues/{{id}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Teams",
+      "item": [
+        {
+          "name": "GET /api/teams",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/teams"
+          }
+        },
+        {
+          "name": "POST /api/teams",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sportId\": \"{{sportId}}\",\n  \"name\": \"Team A\",\n  \"shortCode\": \"TA\"\n}"
+            },
+            "url": "{{baseUrl}}/api/teams"
+          }
+        },
+        {
+          "name": "GET /api/teams/:id",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/teams/{{id}}"
+          }
+        },
+        {
+          "name": "PATCH /api/teams/:id",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Team A Updated\"\n}"
+            },
+            "url": "{{baseUrl}}/api/teams/{{id}}"
+          }
+        },
+        {
+          "name": "DELETE /api/teams/:id",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/teams/{{id}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Matches",
+      "item": [
+        {
+          "name": "GET /api/matches",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/matches"
+          }
+        },
+        {
+          "name": "POST /api/matches",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sportId\": \"{{sportId}}\",\n  \"leagueId\": \"{{leagueId}}\",\n  \"teamAId\": \"{{teamAId}}\",\n  \"teamBId\": \"{{teamBId}}\",\n  \"status\": \"scheduled\",\n  \"startTime\": \"2026-02-07T12:00:00.000Z\"\n}"
+            },
+            "url": "{{baseUrl}}/api/matches"
+          }
+        },
+        {
+          "name": "GET /api/matches/:id",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/matches/{{id}}"
+          }
+        },
+        {
+          "name": "PATCH /api/matches/:id",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"live\"\n}"
+            },
+            "url": "{{baseUrl}}/api/matches/{{id}}"
+          }
+        },
+        {
+          "name": "DELETE /api/matches/:id",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/matches/{{id}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Live Events",
+      "item": [
+        {
+          "name": "GET /api/live-events",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/live-events"
+          }
+        },
+        {
+          "name": "POST /api/live-events",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"matchId\": \"{{matchId}}\",\n  \"eventSequence\": 1,\n  \"eventType\": \"goal\",\n  \"message\": \"Goal by Team A\",\n  \"meta\": {\"playerId\": \"p1\"},\n  \"isHighlight\": true\n}"
+            },
+            "url": "{{baseUrl}}/api/live-events"
+          }
+        },
+        {
+          "name": "GET /api/live-events/:id",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/live-events/{{id}}"
+          }
+        },
+        {
+          "name": "PATCH /api/live-events/:id",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"Goal by Team A (updated)\"\n}"
+            },
+            "url": "{{baseUrl}}/api/live-events/{{id}}"
+          }
+        },
+        {
+          "name": "DELETE /api/live-events/:id",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/live-events/{{id}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "GET /api/users",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/api/users"
+          }
+        },
+        {
+          "name": "GET /api/users/:id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              }
+            ],
+            "url": "{{baseUrl}}/api/users/{{id}}"
+          }
+        }
+      ]
+    }
+  ]
+}

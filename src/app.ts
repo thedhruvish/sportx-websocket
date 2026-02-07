@@ -4,6 +4,8 @@ import liveEventsRouter from "@/routers/live-devents.route.js";
 import matchesRouter from "@/routers/matches.route.js";
 import sportsRouter from "@/routers/sports.route.js";
 import teamsRouter from "@/routers/teams.route.js";
+import authRouter from "@/routers/auth.route.js";
+import usersRouter from "@/routers/users.route.js";
 import { errorMiddleware } from "@/middlewares/globe-error.middleware.js";
 
 const app = express();
@@ -17,6 +19,9 @@ app.get("/", (req, res) => {
   });
 });
 
+app.use("/api/auth", authRouter);
+
+app.use("/api/users", usersRouter);
 app.use("/api/sports", sportsRouter);
 app.use("/api/leagues", leaguesRouter);
 app.use("/api/teams", teamsRouter);
