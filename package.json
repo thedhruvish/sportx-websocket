@@ -19,13 +19,18 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.6",
+    "dotenv": "^17.2.4",
+    "drizzle-kit": "^0.31.8",
+    "drizzle-orm": "^0.45.1",
     "express": "^5.2.1",
+    "pg": "^8.18.0",
     "ws": "^8.19.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.2",
     "@types/express": "^5.0.6",
     "@types/node": "^25.2.1",
+    "@types/pg": "^8.16.0",
     "@types/ws": "^8.18.1",
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",

@@ -1,0 +1,28 @@
+import { pgTable, uuid, varchar, timestamp } from "drizzle-orm/pg-core";
+import { sports } from "./sports.js";
+import { leagues } from "./leagues.js";
+import { teams } from "./teams.js";
+
+export const matches = pgTable("matches", {
+  id: uuid("id").defaultRandom().primaryKey(),
+
+  sportId: uuid("sport_id")
+    .references(() => sports.id)
+    .notNull(),
+
+  leagueId: uuid("league_id").references(() => leagues.id),
+
+  teamAId: uuid("team_a_id")
+    .references(() => teams.id)
+    .notNull(),
+
+  teamBId: uuid("team_b_id")
+    .references(() => teams.id)
+    .notNull(),
+
+  status: varchar("status", { length: 20 }).notNull(),
+  // scheduled | live | completed
+
+  startTime: timestamp("start_time"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
