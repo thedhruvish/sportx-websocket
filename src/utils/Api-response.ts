@@ -1,4 +1,4 @@
-import type { Request, Response, NextFunction } from "express";
+import type { Response } from "express";
 
 export class ApiResponse<T> {
   constructor(
@@ -39,33 +39,4 @@ export const sendResponse = <T>(
   return res
     .status(statusCode)
     .json(new ApiResponse<T>(statusCode, message, data));
-};
-
-const isDev = process.env.NODE_ENV === "development";
-
-export const errorMiddleware = (
-  err: Error | ApiError,
-  _req: Request,
-  res: Response,
-  _next: NextFunction
-) => {
-  const statusCode = err instanceof ApiError ? err.statusCode : 500;
-
-  const message =
-    err instanceof ApiError ? err.message : "Internal Server Error";
-
-  const errors = err instanceof ApiError ? err.errors : null;
-
-  const response: Record<string, unknown> = {
-    statusCode,
-    message,
-    errors,
-  };
-
-  // 👇 stack trace only in development
-  if (isDev) {
-    response.stack = err.stack;
-  }
-
-  return res.status(statusCode).json(response);
 };

@@ -1,5 +1,31 @@
 import { Router } from "express";
+import {
+  createLeagueHandler,
+  deleteLeagueHandler,
+  getLeagueByIdHandler,
+  listLeaguesHandler,
+  updateLeagueHandler,
+} from "@/constrollers/leagues.controller.js";
+import {
+  createLeagueSchema,
+  updateLeagueSchema,
+} from "@/validators/leagues.validator.js";
+import { validate } from "@/middlewares/validate.middleware.js";
+import paramsValidation from "@/middlewares/params-validation.middleware.js";
 
 const router = Router();
+
+router
+  .route("/")
+  .get(listLeaguesHandler)
+  .post(validate({ body: createLeagueSchema }), createLeagueHandler);
+
+router.param("id", paramsValidation);
+
+router
+  .route("/:id")
+  .get(getLeagueByIdHandler)
+  .patch(validate({ body: updateLeagueSchema }), updateLeagueHandler)
+  .delete(deleteLeagueHandler);
 
 export default router;

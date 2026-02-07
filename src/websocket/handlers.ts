@@ -1,6 +1,6 @@
 import type { IncomingMessage } from "node:http";
 import { WebSocket } from "ws";
 
-export const handler = (ws: WebSocket, req: IncomingMessage) => {
+export const handler = (_ws: WebSocket, _req: IncomingMessage) => {
   // handler
 };
