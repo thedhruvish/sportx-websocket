@@ -8,7 +8,7 @@ export default function paramsValidation(
   next: NextFunction,
   id: string | number
 ) {
-  const result = idValidators.safeParse(id);
+  const result = idValidators.safeParse({ id });
   if (!result.success) {
     throw new ApiError(400, "Invalid Id", {
       id: "Your Id are the wrong",

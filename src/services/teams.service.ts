@@ -24,6 +24,9 @@ export const getTeamById = async (id: string): Promise<Team> => {
 
 export const createTeam = async (data: TeamCreate): Promise<Team> => {
   const [team] = await db.insert(teams).values(data).returning();
+  if (!team) {
+    throw notFound("Team not found");
+  }
   return team;
 };
 

@@ -32,6 +32,9 @@ export const createLiveEvent = async (
   data: LiveEventCreate
 ): Promise<LiveEvent> => {
   const [event] = await db.insert(liveEvents).values(data).returning();
+  if (!event) {
+    throw notFound("Live event not found");
+  }
   return event;
 };
 

@@ -24,6 +24,9 @@ export const getLeagueById = async (id: string): Promise<League> => {
 
 export const createLeague = async (data: LeagueCreate): Promise<League> => {
   const [league] = await db.insert(leagues).values(data).returning();
+  if (!league) {
+    throw notFound("League not found");
+  }
   return league;
 };
 

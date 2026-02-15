@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "tsx --watch --env-file .env src/server.ts",
     "start": "node --env-file .env dist/server.js",
-    "build": "tsc",
+    "build": "tsc && tsc-alias",
     "type-check": "tsc --noEmit",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
@@ -44,6 +44,7 @@
     "eslint-plugin-prettier": "^5.5.5",
     "jiti": "^2.6.1",
     "prettier": "^3.8.1",
+    "tsc-alias": "^1.8.16",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.54.0"

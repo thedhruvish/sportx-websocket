@@ -8,7 +8,7 @@ export const createMatchSchema = z.object({
   teamAId: z.uuid(),
   teamBId: z.uuid(),
   status: statusEnum,
-  startTime: z.coerce.date().optional(),
+  startTime: z.iso.datetime().transform((str) => new Date(str)),
 });
 
 export const updateMatchSchema = createMatchSchema

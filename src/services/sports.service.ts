@@ -23,7 +23,20 @@ export const getSportById = async (id: string): Promise<Sport> => {
 };
 
 export const createSport = async (data: SportCreate): Promise<Sport> => {
+  const isExist = await db
+    .select()
+    .from(sports)
+    .where(eq(sports.slug, data.slug));
+
+  if (isExist.length > 0) {
+    throw new ApiError(400, "Sport already slug exists");
+  }
+
   const [sport] = await db.insert(sports).values(data).returning();
+
+  if (!sport) {
+    throw notFound("Sport not found");
+  }
   return sport;
 };
 

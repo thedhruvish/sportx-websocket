@@ -24,6 +24,9 @@ export const getMatchById = async (id: string): Promise<Match> => {
 
 export const createMatch = async (data: MatchCreate): Promise<Match> => {
   const [match] = await db.insert(matches).values(data).returning();
+  if (!match) {
+    throw notFound("Match not found");
+  }
   return match;
 };
 
